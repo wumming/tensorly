@@ -11,6 +11,7 @@ from numpy import reshape, moveaxis, where, copy, transpose
 from numpy import arange, ones, zeros, zeros_like, eye
 from numpy import dot, kron, concatenate
 from numpy import max, min, maximum, all, mean, sum, sign, abs, prod, sqrt
+from numpy import argmin, argmax
 from numpy.linalg import solve, qr
 
 # Author: Jean Kossaifi
@@ -121,6 +122,13 @@ def norm(tensor, order=2, axis=None):
         return np.sqrt(np.sum(tensor**2, axis=axis))
     else:
         return np.sum(np.abs(tensor)**order, axis=axis)**(1/order)
+
+def int(tensor):
+    return np.int_(tensor)
+    # return tensor.astype('int32')
+
+def inverse(tensor):
+    return np.linalg.inv(tensor)
 
 def kr(matrices):
     """Khatri-Rao product of a list of matrices
